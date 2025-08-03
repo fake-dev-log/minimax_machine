@@ -1,0 +1,1 @@
+export type State = null | 'O' | 'X';
