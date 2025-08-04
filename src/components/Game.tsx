@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Board from "./Board";
 import type { State } from "../constants";
 import { calculateWinner } from "../utils";
+import { minmax } from "../algos/minmax";
 
 export default function Game() {
     const [ history, setHistory ] = useState<State[][]>([Array(9).fill(null)]);
@@ -20,18 +21,12 @@ export default function Game() {
     const isAITurn = (isXNext && aiPlayer === 'X') || (!isXNext && aiPlayer === 'O');
 
     const playAI = useCallback((squares: State[]) => {
-        const emptyIndices = squares.reduce((acc, val, idx) => {
-        if (val === null) acc.push(idx);
-            return acc;
-        }, [] as number[]);
-        
-
-        const randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+        const bestMove = minmax(isAIFirst, squares);
         const nextSquares = squares.slice();
-        nextSquares[randomIndex] = aiPlayer;
+        nextSquares[bestMove] = aiPlayer;
 
         return nextSquares;
-    }, [aiPlayer]);
+    }, [isAIFirst, aiPlayer]);
 
     function playHuman(idx: number): void {
         if (isGameOver || currentSquares[idx] !== null || isAITurn) {
