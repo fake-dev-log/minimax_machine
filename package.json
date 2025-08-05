@@ -1,7 +1,7 @@
 {
-  "name": "minmax_machine",
+  "name": "minimax_machine",
   "private": true,
-  "homepage": "https://fake-dev-log.github.io/minmax_machine",
+  "homepage": "https://fake-dev-log.github.io/minimax_machine",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
