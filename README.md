@@ -1,5 +1,7 @@
 # 최대최소 탐색을 활용한 삼목게임(tic-tac-toe)
 
+## [Click to play](https://fake-dev-log.github.io/minmax_machine/)
+
 ## Version 1. 기본 최대최소 탐색 트리
 
 ### 1. 조건
